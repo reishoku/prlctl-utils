@@ -15,10 +15,10 @@ for cmd in "prlctl" "fzf" "grep" "jq"
   end
 end
 
-set -lx PRLCTL (/usr/bin/which prlctl)
-set -lx GREP   (/usr/bin/which grep)
-set -lx FZF    (/usr/bin/which fzf)
-set -lx JQ     (/usr/bin/which jq)
+set -x PRLCTL (/usr/bin/which prlctl)
+set -x GREP   (/usr/bin/which grep)
+set -x FZF    (/usr/bin/which fzf)
+set -x JQ     (/usr/bin/which jq)
 
 function __prlctl_vm_all --wraps prlctl
   $PRLCTL \
