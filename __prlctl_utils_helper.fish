@@ -15,10 +15,10 @@ for cmd in "prlctl" "fzf" "grep" "jq"
   end
 end
 
-set -l PRLCTL (/usr/bin/which prlctl)
-set -l GREP   (/usr/bin/which grep)
-set -l FZF    (/usr/bin/which fzf)
-set -l JQ     (/usr/bin/which jq)
+set -lx PRLCTL (/usr/bin/which prlctl)
+set -lx GREP   (/usr/bin/which grep)
+set -lx FZF    (/usr/bin/which fzf)
+set -lx JQ     (/usr/bin/which jq)
 
 function __prlctl_vm_all --wraps prlctl
   $PRLCTL \
@@ -32,14 +32,14 @@ end
 
 function __prlctl_vm_running --wraps prlctl
   __prlctl_vm_all | \
-    ${JQ} \
+    $JQ \
       -r \
       '.[] | select(.status == "running")'
 end
 
 function __prlctl_vm_stopped --wraps prlctl
   __prlctl_vm_all | \
-    ${JQ} \
+    $JQ \
       -r \
       '.[] | select(.status == "stopped")'
 end
